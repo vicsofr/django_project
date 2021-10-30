@@ -9,6 +9,7 @@ class Posts(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название')
     description = models.TextField(blank=True, verbose_name='Описание')
     content = RichTextUploadingField(verbose_name='Содержание')
+    picture = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True, verbose_name='Изображение')
     date_add = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     date_upd = models.DateTimeField(auto_now=True, verbose_name='Отредактировано')
     author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
