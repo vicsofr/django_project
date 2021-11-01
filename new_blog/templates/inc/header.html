@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand absolute" href="/">Главная</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+        {% if request.user.is_authenticated %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_post' %}">Написать пост</a>
+            </li>
+        </ul>
+        {% endif %}
+        <ul class="navbar-nav mx-auto"></ul>
+        <form action="{% url 'search' %}" method="get" class="me-4">
+            <button class="btn mb-1 btn-sm btn-outline-secondary" type="submit" id="button-addon1">Поиск</button>
+            <input name="q" type="text" class="navbar-form mb-2 mt-2" placeholder="Искать по названию" aria-label="ПОИСК" aria-describedby="button-addon1">
+        </form>
+        <ul class="navbar-nav absolute-right">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">@{{ user.username }}</a>
+            </li>
+            <li class="nav-item me-3">
+                <a href="{% url 'logout' %}" class="nav-link">Выйти</a>
+            </li>
+            {% else %}
+            <li class="nav-item me-3">
+                <a href="{% url 'login' %}" class="nav-link">Войти</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

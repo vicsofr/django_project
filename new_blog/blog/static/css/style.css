@@ -1,0 +1,41 @@
+.navbar-brand {
+    margin-left: 1rem;
+}
+
+.border-light {
+    border-color: rgb(255 255 255)!important;
+}
+
+body {
+    margin-bottom: 60px;#adb5bd
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #343a40;
+}
+
+.page-item.active .page-link {
+    background-color: #212529!important;
+    border-color: #f9fafb!important;
+}
+
+.page-link {
+    color: #212529;
+}
+
+button, input, optgroup, select, textarea {
+    border-color: #adb5bd!important;
+}
+
+.cke_reset {
+    width: 100%!important;
+}

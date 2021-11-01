@@ -1,0 +1,11 @@
+{% load posts_tags %}
+<div class="card" style="width: 15rem;">
+  <div class="card-body">
+    <h5 class="card-title">Популярные теги</h5>
+    <hr>
+    {% get_tags as tags %}
+    {% for tag in tags %}
+    <a href="{% url 'tag' tag.slug %}" class="btn btn-sm btn-outline-primary mt-1 mb-1" role="button">#{{ tag }}</a>
+    {% endfor %}
+  </div>
+</div>

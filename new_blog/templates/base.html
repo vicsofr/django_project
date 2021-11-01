@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Рандомные статьи!{% endblock %}</title>
+</head>
+<body>
+{% include 'inc/header.html' %}
+<div class="container mt-4">
+    <div class="row mt-1">
+        <div class="col-md-3">
+            {% block sidebar %}SIDEBAR{% endblock %}
+        </div>
+        <div class="col-md-8">
+            {% block content %}CONTENT{% endblock %}
+        </div>
+        {% block pagination %}{% endblock %}
+    </div>
+</div>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
+{% include 'inc/footer.html' %}

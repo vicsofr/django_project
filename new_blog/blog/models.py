@@ -3,6 +3,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 from django.contrib.contenttypes.models import ContentType
+from django.urls import reverse
 
 
 class Posts(models.Model):
@@ -13,13 +14,16 @@ class Posts(models.Model):
     date_add = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     date_upd = models.DateTimeField(auto_now=True, verbose_name='Отредактировано')
     author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
-    tags = TaggableManager(verbose_name='Тэги')
+    tags = TaggableManager(verbose_name='Теги')
     views = models.IntegerField(default=0, verbose_name='Просмотры')
 
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
         ordering = ['-date_add']
+
+    def get_absolute_url(self):
+        return reverse('post_view', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.title
