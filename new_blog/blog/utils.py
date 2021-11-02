@@ -4,7 +4,7 @@ def get_children(qs_child):
         c = {
             'id': comment.id,
             'text': comment.text,
-            'comment_date': comment.comment_date.strftime('%Y-%m-%d %H:%m'),
+            'comment_date': comment.comment_date.strftime('%d-%m-%Y %H:%m'),
             'author': comment.author_id,
             'is_child': comment.is_child,
             'parent_id': comment.get_parent
