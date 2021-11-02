@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="card border-light mb-3">
     <div class="card-body">
         <h2 class="card-title">{{ posts_item.title }}</h2>
@@ -18,8 +17,18 @@
         <p class="card-text"><small class="text-muted">{{ posts_item.date_add }}</small></p>
     </div>
 </div>
-
-
+<br>
+<br>
+<h4>Комментарии</h4>
+{% if posts_item.comments.count > 0 %}
+<hr>
+{% endif %}
+{% include 'inc/comments.html' %}
 {% endblock %}
+
+{% block script %}
+{% include 'inc/scripts/script_1.html' %}
+{% endblock %}
+
 
 

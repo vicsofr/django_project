@@ -2,8 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from ckeditor.widgets import CKEditorWidget
 from django.core.exceptions import ValidationError
-
-from .models import Posts
+from .models import Posts, Comment
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 import re
 
@@ -40,9 +39,19 @@ class PostsForm(forms.ModelForm):
         }
 
     def clean_tags(self):
+        # не робит, доделать
         tags = self.cleaned_data['tags']
         for i in tags:
             if re.match(r'[А-Я]\w+', i):
                 raise ValidationError("Русские теги тут не позволительны!")
             else:
                 return tags
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = {
+            'text'
+        }

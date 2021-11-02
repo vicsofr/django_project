@@ -1,7 +1,6 @@
 from django import template
 from blog.models import Posts
-from django.db.models import Count, F
-from taggit.models import Tag
+
 
 register = template.Library()
 
