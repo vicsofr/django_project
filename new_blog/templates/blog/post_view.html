@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ posts_item.title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/top_tags.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="card border-light mb-3">
+    <div class="card-body">
+        <h2 class="card-title">{{ posts_item.title }}</h2>
+        <img src="{{ posts_item.picture.url }}" alt="" width="350" height="500" class="card-img-top mb-3 mt-3">
+        <p class="card-text">{{ posts_item.content|safe }}</p>
+        <p class="card-text"><small class="text-muted">{{ posts_item.date_add }}</small></p>
+    </div>
+</div>
+<br>
+<br>
+<h4>Комментарии</h4>
+{% if posts_item.comments.count > 0 %}
+<hr>
+{% endif %}
+{% include 'inc/comments.html' %}
+{% endblock %}
+
+{% block script %}
+{% include 'inc/scripts/script_1.html' %}
+{% endblock %}
+
+
+

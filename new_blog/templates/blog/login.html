@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Авторизация :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+<h1>Авторизация</h1>
+<br>
+<br>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-dark btn-block">Войти</button>
+</form>
+<hr>
+<p><h5>Нет аккаунта? Зарегистрируйся!</h5></p>
+<a href="{% url 'register' %}" class="btn btn-outline-success mb-5" role="button" aria-pressed="true">Регистрация</a>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/top_tags.html' %}
+{% endblock %}
+
+{% block content %}
+<p class="lead">Найдено записей по запросу '{{ query }}': {{ count }}</p>
+{% for item in page_obj %}
+<div class="card border-light mb-3">
+    <div class="card-body">
+        <h2 class="card-title">{{ item.title }}</h2>
+        {% for tag in item.tags.all %}
+        <a href="{% url 'tag' tag.slug %}">#{{ tag }}</a>
+        {% endfor %}
+        <img src="{{ item.picture.url }}" alt="" width="350" height="500" class="card-img-top mb-3 mt-3"><br>
+        <p class="card-text pb-3">{{ item.description|safe }}</p>
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                <p><a href="{{ item.get_absolute_url }}" role="button" class="btn btn-outline-dark">Читать пост</a></p>
+                <p class="card-text"><small class="text-muted">{{ item.date_add }}</small></p>
+            </div>
+            <div class="col-md-5">
+                <p class="text-muted" align="right"><small>Комментариев:</small></p>
+                <p class="text-muted" align="right"><small>Просмотров: {{ item.views }}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+   hr {
+    border: none;
+    background-color: grey;
+    color: grey;
+    height: 2px;
+   }
+  </style>
+<hr>
+<br>
+{% endfor %}
+{% endblock %}
+
+{% block pagination %}
+{% include 'inc/paginator.html' %}
+{% endblock %}
+
